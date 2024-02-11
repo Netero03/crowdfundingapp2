@@ -1,17 +1,17 @@
 import React, { useContext, createContext } from 'react';
 
-import { useAddress, useContract, useMetamask, useContractWrite } from '@thirdweb-dev/react';
+import { useAddress, useContract, useConnect, useContractWrite } from '@thirdweb-dev/react';
 import { ethers } from 'ethers';
-// import { EditionMetadataWithOwnerOutputSchema } from '@thirdweb-dev/sdk';
+import { EditionMetadataWithOwnerOutputSchema } from '@thirdweb-dev/sdk';
 
 const StateContext = createContext();   
 
 export const StateContextProvider = ({ children }) => {
-  const { contract } = useContract('0x156a4993285D1Bbe3ec0c7d32c3BD628994A4ce4');
+  const { contract } = useContract("0x156a4993285D1Bbe3ec0c7d32c3BD628994A4ce4");
   const { mutateAsync: createCampaign } = useContractWrite(contract, 'createCampaign');
 
   const address = useAddress();
-  const connect = useMetamask();
+  const connect = useConnect();
 
   const publishCampaign = async (form) => {
     try {
