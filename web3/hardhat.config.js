@@ -4,18 +4,13 @@ require("@matterlabs/hardhat-zksync-solc");
 module.exports = {
   solidity: {
     version: "0.8.17",
-    defaultNetwork: 'sepolia',
+    defaultNetwork: "sepolia",
     networks: {
       hardhat: {},
       sepolia: {
-        url: 'https://rpc.sepolia.dev',
+        url: "https://sepolia.rpc.thirdweb.com",
         accounts: [`0x${process.env.PRIVATE_KEY}`],
-        chain: {
-          name: "sepolia",
-          chainId: 11155111,
-        }
-      }
-    
+      },   
     },
     settings: {
       optimizer: {
